@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             x:Class="TrabajoClaseXamarin.Views.MenuView"
+             Title="Menu">
+    <StackLayout>
+        <!--Menu Header-->
+        <StackLayout>
+            <StackLayout HeightRequest="150" 
+                         Padding="20,40,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="75"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="200"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0" Grid.Column="0">
+                        <StackLayout Margin="0,30">
+                            <controls:CircleImage Source="DefaultProfilePicture.png" 
+                                                      Aspect="AspectFill"
+                                                      BorderThickness="4"
+                                                      BorderColor="White">
+                                <controls:CircleImage.WidthRequest>
+                                    <OnPlatform x:TypeArguments="x:Double">
+                                        <On Platform="Android, iOS">75</On>
+                                    </OnPlatform>
+                                </controls:CircleImage.WidthRequest>
+                                <controls:CircleImage.HeightRequest>
+                                    <OnPlatform x:TypeArguments="x:Double">
+                                        <On Platform="Android, iOS">75</On>
+                                    </OnPlatform>
+                                </controls:CircleImage.HeightRequest>
+                            </controls:CircleImage>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="1">
+                        <StackLayout Margin="10,40" 
+                                         Spacing="1">
+                            <Label Text="Maria Suarez"
+                                       TextColor="Black"
+                                       FontSize="Medium" 
+                                       Font="Bold"/>
+                            <!--Client Number-->
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Nro de Cliente:"
+                                           FontSize="Small"
+                                           TextColor="Black"/>
+                                <Label Text="021233"
+                                           FontSize="Small"
+                                          TextColor="Black"/>
+                            </StackLayout>
+                            <!--Client Since-->
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Afiliado desde:"
+                                           FontSize="Small"
+                                           TextColor="Black"/>
+                                <Label Text="12/12/2018"
+                                           FontSize="Small"
+                                           TextColor="Black"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+
+        <!--Menu List-->
+        <StackLayout>
+            <ListView x:Name="EmployeeView"
+                  BackgroundColor="Transparent"
+                  SeparatorVisibility="None"
+                  ItemsSource="{Binding LstMenu}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell Text="{Binding Name}" 
+                               TextColor="#9b9b9b"
+                               CommandParameter="{Binding Id}"
+                               ImageSource="{Binding Icon}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <Button Text="Log out"/>
+                </ListView.Footer>
+            </ListView>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

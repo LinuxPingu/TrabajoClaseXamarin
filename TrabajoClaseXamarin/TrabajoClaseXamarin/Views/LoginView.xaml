@@ -8,16 +8,18 @@
                 <Image Source="Logo" HeightRequest="250" HorizontalOptions="Center"/>
                 <StackLayout Padding="40" Spacing="20">
                     
-                    <Entry 
-                          Placeholder="Email"
-                        HeightRequest="40"/>
+                    <Entry Text="{Binding User.Email}"
+                           Placeholder="Email"
+                           HeightRequest="40"/>
                     
                     <Entry
+                          Text="{Binding User.Password}"
                           IsPassword="True"
                           Placeholder="Password"
                           HeightRequest="40"/>
                     
                     <Button Text="Login"
+                            Command="{Binding LoginCommand}"
                             HeightRequest="40"
                             BackgroundColor="#006eff"
                             TextColor="White"
@@ -48,6 +50,7 @@
                     </StackLayout>
                     
                     <Button Text="Create New Account"
+                            Command="{Binding EnterRegisterCommand}"
                             HeightRequest="50"
                             BackgroundColor="Green"
                             TextColor="White"

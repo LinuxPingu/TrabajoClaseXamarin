@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using TrabajoClaseXamarin.Models;
+using TrabajoClaseXamarin.Views;
 using Xamarin.Forms;
 
 namespace TrabajoClaseXamarin.ModelViews
@@ -86,12 +88,18 @@ namespace TrabajoClaseXamarin.ModelViews
 
         public void Login()
         {
-
+            NavigationPage navigation = new NavigationPage(new HomeView());
+           App.Current.MainPage = new MasterDetailPage
+            {
+                Master = new MenuView(),
+                Detail = navigation
+            };
         }
 
-        public void EnterRegister()
+        public async void EnterRegister()
         {
-
+          await  Application.Current.MainPage.Navigation.PushModalAsync(new RegisterView());
+            
         }
 
         #endregion

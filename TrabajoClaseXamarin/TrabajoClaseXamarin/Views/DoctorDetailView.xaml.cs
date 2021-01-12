@@ -10,12 +10,12 @@ using Xamarin.Forms.Xaml;
 namespace TrabajoClaseXamarin.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginView : ContentPage
+    public partial class DoctorDetailView : ContentPage
     {
-        public LoginView()
+        public DoctorDetailView()
         {
             InitializeComponent();
-            BindingContext = LoginViewModel.getInstance();
+            BindingContext = HomeViewModel.getInstance();
         }
     }
 }
