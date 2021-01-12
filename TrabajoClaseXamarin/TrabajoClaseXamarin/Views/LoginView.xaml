@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TrabajoClaseXamarin.Views.LoginView">
+    <StackLayout VerticalOptions="Center">
+        <ScrollView>
+            <StackLayout>
+                <Image Source="Logo" HeightRequest="250" HorizontalOptions="Center"/>
+                <StackLayout Padding="40" Spacing="20">
+                    
+                    <Entry 
+                          Placeholder="Email"
+                        HeightRequest="40"/>
+                    
+                    <Entry
+                          IsPassword="True"
+                          Placeholder="Password"
+                          HeightRequest="40"/>
+                    
+                    <Button Text="Login"
+                            HeightRequest="40"
+                            BackgroundColor="#006eff"
+                            TextColor="White"
+                            FontSize="Medium"
+                            CornerRadius="5"/>
+
+                    <Label Text="Forgotten Password?"
+                           TextColor="#006eff"
+                           HorizontalOptions="Center"
+                           FontSize="Medium"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        
+                        <BoxView BackgroundColor="#555"
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="Center"
+                                 HeightRequest="1"/>
+                        
+                        <Label Text="Or"
+                               TextColor="#555"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               FontSize="Medium"/>
+
+                        <BoxView BackgroundColor="#555" 
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="Center"
+                                 HeightRequest="1"/>
+                    </StackLayout>
+                    
+                    <Button Text="Create New Account"
+                            HeightRequest="50"
+                            BackgroundColor="Green"
+                            TextColor="White"
+                            CornerRadius="5"
+                            HorizontalOptions="Center"
+                            WidthRequest="320"/>
+                    
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>

@@ -1,4 +1,5 @@
 ﻿using System;
+using TrabajoClaseXamarin.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,8 +10,7 @@ namespace TrabajoClaseXamarin
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            MainPage = new LoginView();
         }
 
         protected override void OnStart()
