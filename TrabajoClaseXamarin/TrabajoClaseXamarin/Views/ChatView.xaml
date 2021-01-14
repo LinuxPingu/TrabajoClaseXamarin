@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TrabajoClaseXamarin.Views.ChatView"
+             xmlns:local="clr-namespace:TrabajoClaseXamarin.Helpers"
+             xmlns:Partials="clr-namespace:TrabajoClaseXamarin.Views.Partials">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ChatTemplateSelector x:Key="MessageTemplateSelector"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="1" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+            
+        <!--Lista de Mensajes-->
+        <ListView x:Name="ChatList"
+                  ItemTemplate="{StaticResource MessageTemplateSelector}"
+                  Grid.Row="0" 
+                  ItemsSource="{Binding LstMsgs}" 
+                  Margin="0" 
+                  HasUnevenRows="True" 
+                  VerticalOptions="FillAndExpand" 
+                  SeparatorColor="Transparent">
+
+        </ListView>
+        
+        <!--Separador-->
+
+        <BoxView Grid.Row="1"
+                 HeightRequest="1"
+                 HorizontalOptions="FillAndExpand"
+                 BackgroundColor="LightGray"/>
+            
+        <!--Caja de Texto-->
+        <Partials:ChatInputBarView 
+            Grid.Row="2" 
+            Margin="0,0,10,0"/>
+    </Grid>
+</ContentPage>
