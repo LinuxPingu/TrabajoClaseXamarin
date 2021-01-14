@@ -11,21 +11,56 @@ namespace TrabajoClaseXamarin.Helpers
     {
         DataTemplate incomingDataTemplate;
         DataTemplate outgoingDataTemplate;
+        DataTemplate incomingImgTemplate;
+        DataTemplate outgoingImgTemplate;
 
         public ChatTemplateSelector()
         {
             this.incomingDataTemplate = new DataTemplate(typeof(IncomingViewCell));
             this.outgoingDataTemplate = new DataTemplate(typeof(OutgoingViewCell));
+            this.incomingImgTemplate = new DataTemplate(typeof(IncomingPictureViewCell));
+            this.outgoingImgTemplate = new DataTemplate(typeof(OutgoingPictureViewCell));
         }
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
             var message = item as MessageModel;
+            DataTemplate final = null;
 
-            if (message == null)
-                return null;
+            if (message!=null)
+            {
+                if (message.isText)
+                {
+                    if (message.User == "User1")
+                    {
+                        final = outgoingDataTemplate;
+                    }
+                    else
+                    {
+                        final = incomingDataTemplate;
+                    }
 
-            return (message.User == "User1") ? outgoingDataTemplate : incomingDataTemplate;
+                }
+                else
+                {
+                    if (message.User == "User1")
+                    {
+                        final = outgoingImgTemplate;
+                    }
+                    else
+                    {
+                        final = incomingImgTemplate;
+                    }
+                }
+
+
+            }
+            else
+            {
+                Console.WriteLine("El mensaje llego nulo!!!!!!!!");
+            }
+
+            return final;
         }
     }
 }

@@ -9,13 +9,17 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
+
+        <Button Text="Pick Img" Command="{Binding SendImgCommand}" />
+
         <Entry x:Name="chatTextInput"
                Grid.Row="0"
-               Grid.Column="0"
+               Grid.Column="1"
                Text="{Binding TextToSend}"
                Margin="1"
                TextColor="Black"
@@ -27,7 +31,7 @@
 
         <Label Text="Send"
                Grid.Row="0"
-               Grid.Column="1"
+               Grid.Column="2"
                VerticalTextAlignment="Center">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding SendTextCommand}"

@@ -6,6 +6,9 @@ using System.Text;
 using System.Windows.Input;
 using TrabajoClaseXamarin.Models;
 using Xamarin.Forms;
+using Xamarin.Essentials;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
 
 namespace TrabajoClaseXamarin.ModelViews
 {
@@ -47,13 +50,14 @@ namespace TrabajoClaseXamarin.ModelViews
         public async void InitClass()
         {
             LstMsgs.Clear();
-            LstMsgs.Add(new MessageModel { User="User2",Text="Hola Comoestas"});
+            LstMsgs.Add(new MessageModel { User="User2",Text="Hola Comoestas",isText=true});
         }
 
         public async void InitCommands()
         {
             SendTextCommand = new Command(this.SendText);
             ScrollListCommand = new Command(this.ScrollList);
+            SendImgCommand = new Command(this.SendImg);
         }
 
         #endregion
@@ -103,14 +107,45 @@ namespace TrabajoClaseXamarin.ModelViews
         public ICommand SendTextCommand { get; set; }
 
         public ICommand ScrollListCommand { get; set; }
+        public ICommand SendImgCommand { get; set; }
 
         public void SendText()
         {
             if (!string.IsNullOrEmpty(this.TextToSend))
             {
-                LstMsgs.Add(new MessageModel { User = "User1", Text = this.TextToSend });
+                LstMsgs.Add(new MessageModel { User = "User1", Text = this.TextToSend, isText = true }) ;
                 TextToSend = string.Empty;
             }
+        }
+
+        public async void SendImg()
+        {
+            try
+            {
+                await CrossMedia.Current.Initialize();
+                MediaFileModel file = new MediaFileModel();
+                if (!CrossMedia.Current.IsPickPhotoSupported)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "No se soporta la funcionalidad", "OK");
+                }
+                else
+                {
+                    var mediaOptions = new PickMediaOptions() { PhotoSize=PhotoSize.Medium };
+                    var selectedImage = await CrossMedia.Current.PickPhotoAsync(mediaOptions);
+                    file.Path = ImageSource.FromStream(() => selectedImage.GetStream());
+                    LstMsgs.Add(new MessageModel { User = "User1", isText = false, Media= file}) ;
+
+                }
+
+               
+              
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: "+e);
+            }
+      
         }
 
         public void ScrollList()
