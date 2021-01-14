@@ -27,6 +27,7 @@ namespace TrabajoClaseXamarin.Views.Partials
             (this.Parent.BindingContext as MessageViewModel).SendTextCommand.Execute(null);
             chatTextInput.Focus();
             (this.Parent.Parent as ChatView).ScrollListCommand.Execute(null);
+            chatTextInput.Text = "";
         }
 
 
