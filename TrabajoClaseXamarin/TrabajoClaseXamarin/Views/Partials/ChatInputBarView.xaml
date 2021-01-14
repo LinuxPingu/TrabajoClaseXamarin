@@ -22,6 +22,7 @@
                Keyboard="Chat"
                HorizontalOptions="FillAndExpand"
                PlaceholderColor="LightGray"
+               Completed="Handle_Completed"
                Placeholder="Entry"/>
 
         <Label Text="Send"
@@ -29,7 +30,8 @@
                Grid.Column="1"
                VerticalTextAlignment="Center">
             <Label.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding SendTextCommand}"/>
+                <TapGestureRecognizer Command="{Binding SendTextCommand}"
+                                      Tapped="Handle_Completed"/>
             </Label.GestureRecognizers>
         </Label>
     </Grid>

@@ -53,6 +53,7 @@ namespace TrabajoClaseXamarin.ModelViews
         public async void InitCommands()
         {
             SendTextCommand = new Command(this.SendText);
+            ScrollListCommand = new Command(this.ScrollList);
         }
 
         #endregion
@@ -101,6 +102,8 @@ namespace TrabajoClaseXamarin.ModelViews
 
         public ICommand SendTextCommand { get; set; }
 
+        public ICommand ScrollListCommand { get; set; }
+
         public void SendText()
         {
             if (!string.IsNullOrEmpty(this.TextToSend))
@@ -109,6 +112,12 @@ namespace TrabajoClaseXamarin.ModelViews
                 TextToSend = string.Empty;
             }
         }
+
+        public void ScrollList()
+        {
+
+        }
+
 
         #endregion
 
