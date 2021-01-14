@@ -1,6 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace TrabajoClaseXamarin.Models
 {
@@ -35,5 +39,47 @@ namespace TrabajoClaseXamarin.Models
             RegisterDate = registerDate;
             Phone = phone;
         }
+
+
+
+        public async static Task GetAllDoctors()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+
+                var uri = new Uri("https://dummyapi.io/data/api/user");
+
+                client.DefaultRequestHeaders.Add("app-id", "5fad867bca750f4fc7508473");
+
+                HttpResponseMessage response = await client.GetAsync(uri).ConfigureAwait(false);
+
+                string ans = await response.Content.ReadAsStringAsync();
+
+                ResponseDoctorModel responseObject = JsonConvert.DeserializeObject<ResponseDoctorModel>(ans);
+
+               
+            }
+        }
+
+        public async static Task<DoctorModel> GetDoctorDetail(string doctorId)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+
+                var uri = new Uri("https://dummyapi.io/data/api/user/" + doctorId);
+
+                client.DefaultRequestHeaders.Add("app-id", "5fad867bca750f4fc7508473");
+
+                HttpResponseMessage response = await client.GetAsync(uri).ConfigureAwait(false);
+
+                string ans = await response.Content.ReadAsStringAsync();
+
+                DoctorModel responseObject = JsonConvert.DeserializeObject<DoctorModel>(ans);
+
+                return responseObject;
+            }
+        }
+
+
     }
 }
