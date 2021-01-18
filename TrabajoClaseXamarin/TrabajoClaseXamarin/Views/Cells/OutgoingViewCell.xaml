@@ -4,7 +4,7 @@
              x:Class="TrabajoClaseXamarin.Views.Cells.OutgoingViewCell">
 
     <Frame BackgroundColor="Gray" Padding="10" HasShadow="False" Margin="80,10,10,10">
-        <Label Text="{Binding Text}" TextColor="White"/>
+        <Label Text="{Binding Message}" TextColor="White"/>
     </Frame>
 
 

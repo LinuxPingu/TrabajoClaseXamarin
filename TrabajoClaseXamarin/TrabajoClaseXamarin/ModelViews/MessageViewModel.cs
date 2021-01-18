@@ -50,7 +50,9 @@ namespace TrabajoClaseXamarin.ModelViews
         public async void InitClass()
         {
             LstMsgs.Clear();
-            LstMsgs.Add(new MessageModel { User="User2",Text="Hola Comoestas",isText=true});
+            this.User.Id = 1;
+            this.User.Username = "LinuxPingu";
+            LstMsgs = await MessageModel.getAllMsg();
         }
 
         public async void InitCommands()
@@ -99,6 +101,25 @@ namespace TrabajoClaseXamarin.ModelViews
 
         #endregion
 
+        #region User
+
+        private UserModel user = new UserModel();
+
+        public UserModel User
+        {
+            get
+            {
+                return user;
+            }
+            set
+            {
+                user = value;
+                OnPropertyChanged("User");
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region Commands
@@ -109,11 +130,12 @@ namespace TrabajoClaseXamarin.ModelViews
         public ICommand ScrollListCommand { get; set; }
         public ICommand SendImgCommand { get; set; }
 
-        public void SendText()
+        public async void SendText()
         {
             if (!string.IsNullOrEmpty(this.TextToSend))
             {
-                LstMsgs.Add(new MessageModel { User = "User1", Text = this.TextToSend, isText = true }) ;
+                bool chk = await MessageModel.SendMsg(this.TextToSend);
+                LstMsgs.Add(new MessageModel { User = "LinuxPingu", Message = this.TextToSend, isText = true }) ;
                 TextToSend = string.Empty;
             }
         }
@@ -133,7 +155,8 @@ namespace TrabajoClaseXamarin.ModelViews
                     var mediaOptions = new PickMediaOptions() { PhotoSize=PhotoSize.Medium };
                     var selectedImage = await CrossMedia.Current.PickPhotoAsync(mediaOptions);
                     file.Path = ImageSource.FromStream(() => selectedImage.GetStream());
-                    LstMsgs.Add(new MessageModel { User = "User1", isText = false, Media= file}) ;
+                
+                    LstMsgs.Add(new MessageModel { User = "LinuxPingu", isText = false, Media= file}) ;
 
                 }
 

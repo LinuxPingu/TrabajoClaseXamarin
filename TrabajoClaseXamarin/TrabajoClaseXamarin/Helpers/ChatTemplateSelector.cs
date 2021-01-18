@@ -31,7 +31,7 @@ namespace TrabajoClaseXamarin.Helpers
             {
                 if (message.isText)
                 {
-                    if (message.User == "User1")
+                    if (message.User == "LinuxPingu")
                     {
                         final = outgoingDataTemplate;
                     }
@@ -43,7 +43,7 @@ namespace TrabajoClaseXamarin.Helpers
                 }
                 else
                 {
-                    if (message.User == "User1")
+                    if (message.User == "LinuxPingu")
                     {
                         final = outgoingImgTemplate;
                     }

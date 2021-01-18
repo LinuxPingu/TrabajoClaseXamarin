@@ -9,6 +9,7 @@ namespace TrabajoClaseXamarin.Models
     {
         [PrimaryKey]
         public int Id { get; set; }
+        public string Username { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -30,4 +31,9 @@ namespace TrabajoClaseXamarin.Models
             Phone = phone;
         }
     }
+
+
+
+
+
 }

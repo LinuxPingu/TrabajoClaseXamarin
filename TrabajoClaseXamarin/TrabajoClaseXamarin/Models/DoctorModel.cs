@@ -22,6 +22,12 @@ namespace TrabajoClaseXamarin.Models
         {
         }
 
+
+        
+
+
+
+
         public DoctorModel(string id, string title, string firstName, string lastName, string gender, string email, string picture, DateTime dateOfBirth, DateTime registerDate, string phone)
         {
             Id = id;
